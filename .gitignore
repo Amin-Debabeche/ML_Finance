@@ -126,7 +126,7 @@ venv.bak/
 dmypy.json
 
 # Raw Input Data
-data/
+data/wsb_comments/
 
 # Pyre type checker
 .pyre/
