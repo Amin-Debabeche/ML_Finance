@@ -127,7 +127,7 @@ dmypy.json
 
 # Raw Input Data
 data/wsb_comments/
-data/GME/
+data/GME/*
 
 # Pyre type checker
 .pyre/
