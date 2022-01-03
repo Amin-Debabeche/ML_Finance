@@ -45,7 +45,7 @@ def build_tcn(X, n_layers, cnn_dropout_p, dense_dropout_p, activation, n_dense_l
     """  
 
     convolutions = [4, 4, 8, 16]
-    double_cnn_per_layer = True
+    double_cnn_per_layer = False
     kernel_initializer = 'glorot_uniform'
     
     loss = keras.losses.BinaryCrossentropy(from_logits=False)
