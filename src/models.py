@@ -83,7 +83,7 @@ def build_tcn(X, n_layers, cnn_dropout_p, dense_dropout_p, activation, n_dense_l
 
     return model
     
-def build_lstm(X, n_layers, lstm_neurons, n_dense_neurons, dropout, batch_size, optimizer):
+def build_lstm(X, n_layers, lstm_neurons, n_dense_neurons, dropout, batch_size, activation, optimizer):
     
     """Builds and compiles a keras 1DLSTM model
     
@@ -142,7 +142,7 @@ def build_lstm(X, n_layers, lstm_neurons, n_dense_neurons, dropout, batch_size, 
         if dropout != None: 
             model.add(keras.layers.Dropout(dropout))
 
-    if n_dense_neurons is not None: model.add(keras.layers.Dense(n_dense_neurons, activation='relu'))
+    if n_dense_neurons is not None: model.add(keras.layers.Dense(n_dense_neurons, activation=activation))
         
     # Output softmax of bins
     model.add(keras.layers.Dense(2, activation='softmax'))
