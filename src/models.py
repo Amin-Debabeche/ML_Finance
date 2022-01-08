@@ -8,7 +8,7 @@ from tensorflow.keras.optimizers import SGD, Adam
 from tensorflow.compat.v1 import ConfigProto
 from tensorflow.compat.v1 import InteractiveSession
 
-def build_tcn(X, n_layers, cnn_dropout_p, dense_dropout_p, activation, n_dense_layers, n_dense_neurons, batch_normalization, 
+def build_tcn(X, n_layers, cnn_dropout_p, dense_dropout_p, activation, n_dense_layers, n_dense_neurons, batch_normalization, kernel_initializer,
                  batch_size, optimizer):
         
     """Builds and compiles a keras 1DCNN model
@@ -46,7 +46,6 @@ def build_tcn(X, n_layers, cnn_dropout_p, dense_dropout_p, activation, n_dense_l
 
     convolutions = [4, 4, 8, 16]
     double_cnn_per_layer = False
-    kernel_initializer = 'glorot_uniform'
     
     loss = keras.losses.BinaryCrossentropy(from_logits=False)
     metrics = ['accuracy', keras.metrics.Precision(), keras.metrics.Recall()]
@@ -83,7 +82,7 @@ def build_tcn(X, n_layers, cnn_dropout_p, dense_dropout_p, activation, n_dense_l
 
     return model
     
-def build_lstm(X, n_layers, lstm_neurons, n_dense_neurons, dropout, batch_size, activation, optimizer):
+def build_lstm(X, n_layers, lstm_neurons, n_dense_neurons, dropout, batch_size, activation, kernel_initializer, optimizer):
     
     """Builds and compiles a keras 1DLSTM model
     
@@ -111,10 +110,7 @@ def build_lstm(X, n_layers, lstm_neurons, n_dense_neurons, dropout, batch_size, 
     keras.Model
         a compiled keras model with the provided hyper-parameters
     """  
-    
-
-    kernel_initializer = 'glorot_uniform'
-    
+        
     loss = keras.losses.BinaryCrossentropy(from_logits=False)
     metrics = ['accuracy', keras.metrics.Precision(), keras.metrics.Recall()]
     
